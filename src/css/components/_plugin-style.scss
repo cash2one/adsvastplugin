@@ -1,0 +1,190 @@
+.#{$player} .ad-container .Ad-controlBar{
+    z-index: 2;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4em;
+    font-size: 10px !important;
+    margin-bottom: 0 !important;
+}
+
+.#{$player} .overlay-ad{
+    width: 100%;
+    height: 100%;
+}
+
+.#{$player} .#{$player}-ad-control {
+    position: relative;
+    text-align: center;
+    margin: 0px;
+    padding: 0;
+    height: 100% !important;
+    width: 3em;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-box-flex: none;
+    -moz-box-flex: none;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+}
+
+.#{$player} .#{$player}-ad-control:before{
+    font-size: 2.4em;
+    line-height: 1.67;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+}
+
+.#{$player} .ad-play-control {
+    margin-left: 1em;
+    cursor: pointer;
+    -webkit-box-flex: none;
+    -moz-box-flex: none;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none
+}
+
+.#{$player} .ad-play-control {
+    @extend .vjs-icon-k14vp-play;
+}
+
+
+.#{$player} .ad-play-control.playing {
+    @extend .vjs-icon-k14vp-pause;
+}
+
+.#{$player} .ad .control-bar {
+    display: none
+}
+
+.#{$player} .ad-vast .VAST-container {
+    height: 100%;
+    width: 100%;
+}
+
+.#{$player} .ad .VideoEl-container {
+    height: 100%;
+    width: 100%;
+}
+
+.#{$player} .ad .VideoEl-container {
+    background: black;
+}
+
+
+
+// .#{$player} .ad.ad-vast {
+//     background: black;
+// }
+
+
+.#{$player} .#{$player}-ad-btn-mute {
+    position: absolute;
+    cursor: pointer;
+    right: 0;
+    bottom: 45px;
+    opacity: 0.4
+}
+
+.#{$player} .#{$player}-ad-btn-mute button {
+    height: 33px;
+    width: 34px;
+    line-height: 29px;
+    font-size: 22px;
+    border: 2px solid;
+    border-bottom-left-radius: 100px;
+    border-top-left-radius: 100px;
+    border-right: none;
+    cursor: pointer;
+    position: relative
+}
+
+.#{$player} .#{$player}-ad-qmtwbs-base {
+    width: 7px;
+    height: 13px;
+    position: absolute;
+    top: 8px;
+    left: 6px;
+    background: url(https://vcplayer.mediacdn.vn/1.1/dist/public/image/speaker-base.png) left top no-repeat
+}
+
+@keyframes volumeAnimate {
+    0% {
+        opacity: 0
+    }
+
+    25% {
+        background-image: url(https://vcplayer.mediacdn.vn/1.1/dist/public/image/speaker-vol-level-1.png);
+        opacity: 1
+    }
+
+    50% {
+        background-image: url(https://vcplayer.mediacdn.vn/1.1/dist/public/image/speaker-vol-level-2.png);
+        opacity: 1
+    }
+
+    100% {
+        background-image: url(https://vcplayer.mediacdn.vn/1.1/dist/public/image/speaker-vol-level-3.png);
+        opacity: 1
+    }
+}
+
+.#{$player} .#{$player}-ad-qmtwbs-level {
+    position: absolute;
+    top: 7px;
+    left: 15px;
+    width: 10px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: 10px;
+    animation: volumeAnimate 1s linear infinite alternate;
+    -webkit-animation: volumeAnimate 1s linear infinite alternate;
+    -moz-animation: volumeAnimate 1s linear infinite alternate;
+    background-image: url(https://vcplayer.mediacdn.vn/1.1/dist/public/image/speaker-vol-level-3.png)
+}
+
+.#{$player} .#{$player}-ad-line-mute {
+    cursor: pointer;
+    display: block;
+    width: 40px;
+    height: 2px;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 14px;
+    left: 1px;
+    content: '';
+    background: #fff
+}
+
+.user-active:hover .#{$player}-ad-btn-mute {
+    opacity: 0.8;
+    transition: 0.4s all
+}
+
+.#{$player} .ad-full-screen-toggle{
+	@extend .vjs-icon-k14vp-fullscreen;
+	cursor: pointer;
+	float: right;
+	margin-right: 4px;
+}
+
+.#{$player} .fullscreen {	
+	z-index: 9999999999999;
+}
+
+.#{$player} .fullscreen .ad-full-screen-toggle{
+	@extend .vjs-icon-k14vp-exit-fullscreen;
+}
