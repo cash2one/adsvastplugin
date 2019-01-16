@@ -1,28 +1,32 @@
-import playercore  from 'playercore';
-import AdsPlugin from './AdsPlugin';
-import React from 'react';
-import Ad from './AdSkin';
-import Vast from './vast-vpaid';
-import dom from './vast-vpaid/utils/dom';
+import playercore from 'playercore';
+import pxhr from './p-xhr';
+import InfoAds from './InfoAds';
+import DefaultAd from './default/DefaultAd';
+const Player = playercore.getComponent('Player');
 
-playercore.Vast = Vast ;
-
-const AdsPlayerPlugin = function () {
+const adsVastPlugin = function () {
     let player = this;
-    new AdsPlugin({ player });
+    let adRequest;
+    let { params, plugins} = player.options();
 
-    player.one('ready',function(){
-        let ele = (
-            <Ad key="ad" player={player} ref={(c) => { this.container.ad = c; }} /> 
-        );
-        player.container.addChild(ele);
-        var overlayAd = document.createElement('div');
-        overlayAd.style.background = 'rgba(0,0,0,0.7)';
-        overlayAd.style.transition = 'all 1s ease 0s';
-        overlayAd.style.opacity = 0;
-        dom.addClass(overlayAd, 'overlay-ad');
-        player.overlay.append(overlayAd);
+    if (params.ads === false || (!plugins.kinghubAdmicroADSPlugin && Player.prototype.kinghubAdmicroADSPlugin)) {
+        return;
+    }
+
+    let url = params.adInfoUrl || 'http://103.69.195.214:8000/file/demo.json' ;
+
+    DefaultAd._getPlayer(player);
+
+    player.one('ready', function () {
+        pxhr({
+            url: url,
+            method: 'GET'
+        }).then((result) => {
+            adRequest = JSON.parse(result);
+            InfoAds.getInfoAd(player, adRequest);
+        });
     });
+
 };
 
-playercore.registerPlugin('AdsPlayerPlugin', AdsPlayerPlugin);  
+playercore.registerPlugin('adsVastPlugin', adsVastPlugin);  

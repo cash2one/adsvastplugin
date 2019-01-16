@@ -26,18 +26,6 @@ const args = minimist(process.argv.slice(2), {
 let {player} = args;
 player = player || 'vcplayer';
 let pluginName = pkg.name;
-let VAST_CREDENTIALS = false;
-let supportIma = false;
-
-if (JSON.stringify(player) !== -1){
-    supportIma = true;
-}
-
-let env = 'production';
-if (player === 'vcplayer') {
-    env = 'localhost';
-}
-
 
 const primedResolve = resolve({
     jsnext: true,
@@ -71,9 +59,7 @@ const primedBabel = babel({
 const replaceValue = replace({
     values: {
         'process.env.PLAYER': JSON.stringify(player),
-        'process.env.VAST_CREDENTIALS': VAST_CREDENTIALS,
-        'process.env.SUPPORT_IMA': supportIma,
-        'process.env.NODE_ENV': JSON.stringify(env),
+        'process.env.NODE_ENV': JSON.stringify('production')
     }
 });
 

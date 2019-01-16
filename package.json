@@ -1,10 +1,10 @@
 {
-  "name": "AdsPlayerPlugin",
+  "name": "adsVastPlugin",
   "version": "1.0.0",
   "description": "",
-  "main": "./dist/AdsPlayerPlugin.cjs.js",
-  "module": "./dist/AdsPlayerPlugin.es.js",
-  "style": "./dist/AdsPlayerPlugin.css",
+  "main": "./dist/adsVastPlugin.cjs.js",
+  "module": "./dist/adsVastPlugin.es.js",
+  "style": "./dist/adsVastPlugin.css",
   "scripts": {
     "clean": "rm -rf dist/ && rm -rf plugin.zip",
     "lint": "./node_modules/.bin/eslint --ext .js --ext .jsx . --fix",
@@ -51,7 +51,6 @@
     "rollup-plugin-sass": "0.5.3",
     "rollup-plugin-uglify": "2.0.1",
     "time-grunt": "1.4.0",
-    "uglify-js": "3.1.6",
-    "vpaid-html5-client": "^0.1.14"
+    "uglify-js": "3.1.6"
   }
 }
