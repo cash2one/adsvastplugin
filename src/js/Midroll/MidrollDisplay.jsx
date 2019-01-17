@@ -179,7 +179,7 @@ class MidrollDisPlay extends Component {
                 {
                     sortInfoAd.map(function (info, index) {
                         return (
-                            <MidrollMarket key={index}
+                            <MidrollMarket key={`midroll -display ${index}`}
                                 seconds={info[2]}
                                 vastUri={info[1]}
                                 skipoffset={info[0]}
