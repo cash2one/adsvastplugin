@@ -26,7 +26,7 @@ class DefaultAd {
 
     _initAd({ vastUrl, vastResponse, ima, type, skipoffset }) {
         var player = this.player;
-
+        console.log(player);
         if (player.vastAd) {
             return;
         }

@@ -44,7 +44,6 @@ class AdsPlugin extends DefaultAdPlugin {
         };
     }
 
-
     constructor(props) {
         super(props);
         let { player, enableAd } = this.props;
@@ -73,7 +72,7 @@ class AdsPlugin extends DefaultAdPlugin {
     }
 
     /**
-     * Bước chuẩn bị để chạy preroll ad 
+     * Bước chuẩn bị để chạy preroll ad
      * @return {[type]} [description]
      */
     @autobind

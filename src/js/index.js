@@ -6,6 +6,9 @@ const Player = playercore.getComponent('Player');
 
 const adsVastPlugin = function () {
     let player = this;
+
+    console.log(player.options());
+
     let adRequest;
     let { params, plugins} = player.options();
 
@@ -29,4 +32,4 @@ const adsVastPlugin = function () {
 
 };
 
-playercore.registerPlugin('adsVastPlugin', adsVastPlugin);  
+playercore.registerPlugin('adsVastPlugin', adsVastPlugin);
