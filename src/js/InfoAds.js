@@ -31,21 +31,21 @@ class InfoAds {
         let numberIndex = 0;
 
         for (let i in schedule) {
-            let ssp = sspAds.getLinkAds(player, {position: numberIndex});
+            let isAddLinkSSP = schedule[i];
 
             if (schedule[i].offset === 'start') {
                 PrerollVastUrl = schedule[i];
 
-                PrerollVastUrl = PrerollVastUrl + '&link=' + ssp;
+                PrerollVastUrl = PrerollVastUrl + this.createSsp(numberIndex, isAddLinkSSP);
             } else if (schedule[i].offset === 'end') {
                 PostrollVastUrl = schedule[i];
 
-                PostrollVastUrl = PostrollVastUrl + '&link=' + ssp;
+                PostrollVastUrl = PostrollVastUrl + this.createSsp(numberIndex, isAddLinkSSP);
             } else {
                 MidrollVastUrl[schedule[i].offset] = {};
                 let { tag, skipoffset, repeat, repeatTime, durationLogical, durationValue} = schedule[i];
 
-                tag = tag + '&link=' + ssp;
+                tag = tag + this.createSsp(numberIndex, isAddLinkSSP);
 
                 MidrollVastUrl[schedule[i].offset] = ({ tag, skipoffset, repeatTime, repeat, durationLogical, durationValue });
             }
@@ -58,12 +58,15 @@ class InfoAds {
         this._createPostroll(player, PostrollVastUrl);
     }
 
-    createMacroSSp(position){
+    createSsp(position, isAddLinkSSP){
+        if(!isAddLinkSSP) return '';
+
         let player = this.player_;
         let ssp = sspAds.getLinkAds(player, {position: position});
-        let category = typeof window._ADM_Channel == 'undefined' ? '' : window._ADM_Channel;
+        let category = typeof _ADM_Channel == 'undefined' ? '' : _ADM_Channel;
+        let admtvcPgid = typeof admtvcPgid == 'undefined' ? '&lsn=&dgid=&i=' : admtvcPgid();
 
-        return '&link=' + ssp + '&category=' + category;
+        return '&link=' + ssp + '&category=' + category + admtvcPgid;
     }
 
     _createPreroll(player, PrerollVastUrl){
